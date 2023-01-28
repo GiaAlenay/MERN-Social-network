@@ -10,6 +10,7 @@ import path from "path"
 import { fileURLToPath } from "url";
 import { register } from "./controllers/auth.js";
 import routes from "./routes/auth.js";
+import userRoutes from "./routes/user.js";
 
 const __filename=fileURLToPath(import.meta.url)
 const __dirname=path.dirname(__filename);
