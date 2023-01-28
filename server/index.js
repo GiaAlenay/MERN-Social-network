@@ -8,6 +8,7 @@ import multer from "multer";
 import helmet from "helmet"
 import path from "path"
 import { fileURLToPath } from "url";
+import { register } from "./controllers/auth.js";
 
 const __filename=fileURLToPath(import.meta.url)
 const __dirname=path.dirname(__filename);
@@ -32,3 +33,18 @@ const storage=multer.diskStorage({
 })
 
 const upload=multer({storage})
+
+app.post("/auth/register", upload.single("picture"),register)
+
+const PORT=process.env.PORT || 6001
+
+mongoose.connect('mongodb://localhost/prototype',{
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+})
+.then(()=>{
+    app.listen(PORT,()=>console.log(`Server Port: ${PORT}`))
+
+}).catch((e)=>{
+    console.log(`${e} did not connection`)
+})
