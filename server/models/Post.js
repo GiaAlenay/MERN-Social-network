@@ -22,7 +22,7 @@ likes:{
     of:Boolean
 },
 comments:{
-    types:Array,
+    type:Array,
     default:[]
 }
 },{timestamps:true})
